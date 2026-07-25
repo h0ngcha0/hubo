@@ -1,0 +1,15 @@
+{
+  "name": "botong",
+  "owner": {
+    "name": "h0ngcha0",
+    "url": "https://github.com/h0ngcha0"
+  },
+  "plugins": [
+    {
+      "name": "botong",
+      "description": "Runs a worker/reviewer reconciliation loop before code handoff.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

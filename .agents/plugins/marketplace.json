@@ -1,0 +1,21 @@
+{
+  "name": "botong",
+  "interface": {
+    "displayName": "Botong"
+  },
+  "plugins": [
+    {
+      "name": "botong",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/h0ngcha0/botong.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

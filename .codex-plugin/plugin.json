@@ -1,0 +1,33 @@
+{
+  "name": "botong",
+  "version": "0.1.0",
+  "description": "Runs a persistent worker/reviewer loop that implements code, challenges it independently, and reconciles findings before handoff.",
+  "author": {
+    "name": "h0ngcha0",
+    "url": "https://github.com/h0ngcha0"
+  },
+  "homepage": "https://github.com/h0ngcha0/botong",
+  "repository": "https://github.com/h0ngcha0/botong",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "multi-agent",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Botong",
+    "shortDescription": "Two hands: one builds, one challenges",
+    "longDescription": "Coordinate a persistent implementer and independent reviewer until every code finding is reconciled.",
+    "developerName": "h0ngcha0",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions",
+      "Multi-agent coordination"
+    ],
+    "websiteURL": "https://github.com/h0ngcha0/botong",
+    "defaultPrompt": [
+      "Use Botong to implement this change and reconcile review feedback."
+    ]
+  }
+}
