@@ -114,38 +114,6 @@ The host-specific wrappers are intentionally small:
 - `claude/shared/hubo.md` contains the shared workflow.
 - `claude/shared/references/hosts.md` maps the workflow onto each host's agent primitives.
 
-## Development
-
-The Python validators require PyYAML. From the repository root, create a disposable environment and run all package checks:
-
-```bash
-(
-  hubo_validator_dir="$(mktemp -d)"
-  trap 'rm -rf "$hubo_validator_dir"' EXIT
-  python3 -m venv "$hubo_validator_dir"
-  "$hubo_validator_dir/bin/python" -m pip install PyYAML
-  "$hubo_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" skills/hubo
-  "$hubo_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
-  claude plugin validate .
-  claude plugin validate ./claude
-)
-```
-
-Load the checkout directly in Claude Code:
-
-```bash
-claude --plugin-dir ./claude
-```
-
-For direct Codex discovery, create a local skill link and start a new conversation:
-
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-ln -s "$PWD/skills/hubo" "${CODEX_HOME:-$HOME/.codex}/skills/hubo"
-```
-
-If that destination already exists, confirm it resolves to this checkout; do not overwrite it. In the new conversation, ask Codex to use Hubo on a coding change.
-
 ## License
 
 [MIT](LICENSE) © 2026 h0ngcha0
