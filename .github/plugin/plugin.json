@@ -8,5 +8,11 @@
   },
   "homepage": "https://github.com/h0ngcha0/hubo",
   "repository": "https://github.com/h0ngcha0/hubo",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "multi-agent",
+    "productivity"
+  ],
+  "skills": "skills/"
 }
