@@ -5,4 +5,4 @@ description: Run a two-role worker/reviewer loop that implements, verifies, inde
 
 # Hubo
 
-Read [the shared Hubo workflow](../../claude/shared/hubo.md) completely and follow it. Resolve its relative links from the shared file's directory.
+Read [the Hubo workflow](workflow.md) completely and follow it. Resolve its relative links from the workflow file's directory.

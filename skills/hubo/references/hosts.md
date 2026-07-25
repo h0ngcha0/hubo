@@ -12,7 +12,7 @@ Select this adapter when `spawn_agent`, `followup_task`, and `wait_agent` are av
 | Reviewer standby | Give `review_agent` an initial standby task that returns without inspecting files. |
 | Resume a role | Call `followup_task` with the existing role ID; never replace the role for a new round. |
 | Wait | Call `wait_agent` for a meaningful completion; do not poll status. |
-| Relay | Use the child result delivered to the parent, then write the concise role-labeled conclusion in the current conversation. |
+| Relay | Mirror every complete top-level work/review report in the current conversation with its role and round label; repeat it in the final conversation transcript, never a file. |
 | Descendants | Let a role call `spawn_agent` only for bounded independent work; its descendants inherit that role's write boundary. |
 
 Use `send_message` only for information that does not need to trigger a stopped role; use `followup_task` for the next work or review round.
@@ -27,7 +27,7 @@ Select this adapter when `Agent` and `SendMessage` are available.
 | Reviewer standby | Prompt `review_agent` to return `READY` without inspecting files. A stopped agent remains the reviewer for later rounds. |
 | Resume a role | Call `SendMessage({to: agentId})` with the next round; do not use a resume argument on `Agent`. |
 | Wait | Use completion notifications. For background output, use `Read` on the output path supplied by the notification; do not use deprecated `TaskOutput`. |
-| Relay | Summarize each returned agent conclusion with the required role label in the current Claude conversation. |
+| Relay | Mirror every complete top-level work/review report in the current Claude conversation with its role and round label; repeat it in the final conversation transcript, never a file. |
 | Descendants | Permit them only when the child exposes `Agent`; otherwise keep bounded subwork in the owning top-level role. |
 
 Treat reviewer isolation as mechanically read-only only when a narrow allowlist or sandbox blocks every mutation path, including file editors, notebook editors, shell/process writes, and write-capable external tools. In all cases, snapshot the worktree before and after every review and treat any reviewer mutation as an open protocol violation for the worker to reconcile. Allow reviewer shell commands only for non-destructive inspection and verification.

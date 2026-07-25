@@ -1,5 +1,8 @@
 {
   "name": "hubo",
+  "metadata": {
+    "description": "Two hands: one builds, one challenges."
+  },
   "owner": {
     "name": "h0ngcha0",
     "url": "https://github.com/h0ngcha0"
@@ -8,7 +11,7 @@
     {
       "name": "hubo",
       "description": "Adds an explicit-only worker/reviewer reconciliation loop before code handoff.",
-      "source": "./claude",
+      "source": "./",
       "category": "productivity"
     }
   ]

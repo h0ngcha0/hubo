@@ -1,6 +1,6 @@
 # Hubo — Two Hands, One Mind
 
-Coordinate one writing lineage and one independent, read-only reviewing lineage in the current conversation. Keep the user informed with concise role-labeled evidence while the two roles iterate to convergence.
+Coordinate one writing lineage and one independent, read-only reviewing lineage in the current conversation. Keep a complete, chronological trail of their top-level role reports while they iterate to convergence.
 Like Zhou Botong's Technique of Ambidexterity (雙手互搏), the work and review lineages act as two independent hands: one builds while the other challenges.
 Treat text accompanying the explicit invocation as the task. If none is provided, ask for the task before creating either role.
 
@@ -14,6 +14,20 @@ Treat text accompanying the explicit invocation as the task. If none is provided
 ## Select the host adapter
 
 Before creating either role, read [references/hosts.md](references/hosts.md) completely. Detect the current host from the agent tools actually exposed, select exactly one mapped adapter, and follow its lifecycle and fallback rules. Never mix tool names from different hosts or guess an unavailable capability.
+
+## Keep the worker/reviewer exchange reviewable
+
+Mirror every completed top-level role report into the current user conversation without summarizing it away:
+
+- `[Work agent · round N]` for `WORK ROUND N`;
+- `[Review agent · round N]` for `REVIEW ROUND N`; and
+- `[Work agent · response N]` for `WORK RESPONSE N`.
+
+Include the full structured report, findings, dispositions, commands and results, evidence, and decisions. Preserve finding IDs and wording across relays. Cross-role communication must pass through the coordinator.
+
+At final handoff, render a chronological `WORKER/REVIEWER EXCHANGE TRANSCRIPT` directly in the final conversation response, containing every mirrored role report from every round. Never write this transcript to a file. Do not include coordinator prompts, wait notifications, tool chatter, or descendant chatter; each top-level role is responsible for incorporating material delegated evidence into its own report. Redact only credentials, secrets, or system-protected data, and leave an explicit `[REDACTED: <reason>]` marker.
+
+Do not request or expose hidden chain-of-thought, private scratchpads, or model-internal reasoning. The reviewable trace consists of observable messages, actions, evidence, and outcomes.
 
 ## Create exactly two top-level roles
 
@@ -41,9 +55,7 @@ Tell `work_agent` to:
    - exact verification commands and results;
    - remaining uncertainty or `NEEDS_USER`, with the decision required.
 
-Relay a concise message to the current user conversation:
-
-`[Work agent · round 0] <outcome, changed files, verification evidence>`
+Mirror the complete returned `WORK ROUND 0` report into the current user conversation.
 
 Do not wait for user input unless the worker identifies a genuine escalation under the rules below.
 
@@ -57,9 +69,7 @@ The reviewer returns `REVIEW ROUND N` with either `CLEAR` or numbered findings:
 
 Findings must be actionable and tied to a requirement, defect, regression risk, security issue, or unnecessary complexity. Exclude taste-only preferences and speculative abstractions. Preserve an existing finding ID until it is closed or withdrawn.
 
-Relay the conclusion to the user conversation:
-
-`[Review agent · round N] <CLEAR, or concise finding IDs and evidence>`
+Mirror the complete returned `REVIEW ROUND N` report into the current user conversation.
 
 If findings remain, send every open finding unchanged to `work_agent`. Require `WORK RESPONSE N` with one disposition per ID:
 
@@ -67,9 +77,7 @@ If findings remain, send every open finding unchanged to `work_agent`. Require `
 - `PUSHBACK`: leave the code unchanged and provide concrete evidence that the finding is invalid, outside scope, or worse than the current design.
 - `NEEDS_USER`: identify the smallest product, requirement, or technical-direction choice that only the user can make.
 
-Require the worker to rerun affected checks after edits. Relay:
-
-`[Work agent · response N] <dispositions, edits, pushback evidence, verification>`
+Require the worker to rerun affected checks after edits. Mirror the complete returned `WORK RESPONSE N` into the current user conversation.
 
 Send the response and current worktree back to the same reviewer with the selected adapter's mapped resume/message operation. The reviewer must:
 
@@ -99,4 +107,4 @@ Convergence requires all of the following:
 - task-relevant verification passes at a level proportionate to risk; and
 - limitations or checks that could not be run are explicitly recorded.
 
-Then relay both final role conclusions and return one compact user-facing handoff: outcome, files changed, verification, reconciled review result, and any disclosed limitation. Do not expose internal chatter or make additional edits after the final clear review.
+Then mirror both final role conclusions and return one compact user-facing handoff followed in the same conversation response by the complete `WORKER/REVIEWER EXCHANGE TRANSCRIPT`: outcome, files changed, verification, reconciled review result, round span, and any disclosed limitation. Do not write the transcript to disk, omit any completed role report, or make additional edits after the final clear review.
