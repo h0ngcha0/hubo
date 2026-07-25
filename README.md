@@ -9,7 +9,7 @@
 
 <p align="center">
   <strong>雙手互搏</strong><br>
-  <em>One builds. One challenges.</em>
+  <em>Two hands spar over every change. Only real decisions reach you.</em>
 </p>
 
 ---
@@ -22,7 +22,7 @@ It sounds like a party trick. It is actually a discipline: split creation from c
 
 Hubo puts that little duel inside your coding agent.
 
-The name comes from **互搏** (*hùbó*): to spar with each other. Not two agents politely taking turns, and not a reviewer saying “looks good” from the doorway. One builds. One challenges. They exchange evidence until the code — not either agent's ego — wins.
+The name comes from **互搏** (*hùbó*): to spar with each other. Not two agents politely taking turns, and not a reviewer saying “looks good” from the doorway. Two hands spar over every change. Only real decisions reach you. They exchange evidence until the code — not either agent's ego — wins.
 
 ## Before / after
 

@@ -17,7 +17,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Hubo",
-    "shortDescription": "Two hands: one builds, one challenges",
+    "shortDescription": "Two hands spar. Only real decisions reach you.",
     "longDescription": "On explicit selection, coordinate a persistent implementer and independent reviewer until every code finding is reconciled.",
     "developerName": "h0ngcha0",
     "category": "Productivity",
