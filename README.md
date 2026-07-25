@@ -8,13 +8,17 @@
 <h1 align="center">Hubo</h1>
 
 <p align="center">
-  <strong>雙手互搏</strong><br>
+  <strong>双手互搏</strong><br>
   <em>Two hands spar over every change. Only real decisions reach you.</em>
+</p>
+
+<p align="center">
+  <sub><a href="README.zh-CN.md">简体中文</a></sub>
 </p>
 
 ---
 
-[Zhou Botong](https://en.wikipedia.org/wiki/Zhou_Botong) is one of wuxia's great eccentrics: a legendary martial artist with the temperament of a mischievous child. When ordinary practice becomes too ordinary, he invents something delightfully absurd — the **Technique of Ambidexterity** (雙手互搏).
+[Zhou Botong](https://en.wikipedia.org/wiki/Zhou_Botong) is one of wuxia's great eccentrics: a legendary martial artist with the temperament of a mischievous child. When ordinary practice becomes too ordinary, he invents something delightfully absurd — the **Technique of Ambidexterity** (双手互搏).
 
 He teaches each hand to act independently. One hand attacks; the other answers. Each uses a different martial art. The same person becomes both opponents, and the sparring continues until neither hand can surprise the other.
 
