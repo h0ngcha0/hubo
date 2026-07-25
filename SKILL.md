@@ -1,0 +1,102 @@
+---
+name: botong
+description: Run a two-role worker/reviewer loop that implements, verifies, independently reviews, and reconciles code changes before returning them to the user. Use for any programming task that creates or changes code—including bug fixes, features, refactors, migrations, and tests—when collaboration agents are available.
+---
+
+# Botong — Two Hands, One Mind
+
+Coordinate one writing lineage and one independent, read-only reviewing lineage in the current conversation. Keep the user informed with concise role-labeled evidence while the two roles iterate to convergence.
+Like Zhou Botong's Technique of Ambidexterity (雙手互搏), the work and review lineages act as two independent hands: one builds while the other challenges.
+
+## Establish the contract
+
+1. Read the request and all applicable repository instructions, including `AGENTS.md`.
+2. Preserve user-owned worktree changes. Never reset, checkout, clean, stash, delete, or rewrite unrelated changes.
+3. State only assumptions that affect the result. Derive concrete acceptance criteria and proportionate verification from the request.
+4. Honor all active skills and instructions. In particular, apply Ponytail and simplicity principles: understand the full path before editing, reuse existing code, prefer standard or native features, fix root causes in shared paths, keep the diff surgical, and leave the smallest runnable check for non-trivial logic.
+
+## Create exactly two top-level roles
+
+Spawn exactly two direct children in the same collaboration tree, once:
+
+- `work_agent`: pragmatic senior implementer. Its lineage is the only lineage allowed to edit files. It owns investigation, implementation, cleanup caused by its changes, and verification.
+- `review_agent`: skeptical senior reviewer. Its entire lineage is read-only. It inspects the implementation and evidence, runs only non-destructive checks, and reports correctness, security, regression, maintainability, and requirement gaps.
+
+Do not create a third top-level child or replace either role during the loop. Either role may spawn descendants for bounded independent subtasks when useful and capacity permits; descendants stay categorized by their parent lineage and inherit its write boundary. Do not hardcode a model or provider.
+
+In the review agent's initial task, tell it to stand by without inspecting the worktree until it receives a completed work round. Start the work agent immediately. With limited concurrency, prefer the two persistent roles over descendants.
+
+Use `wait_agent` for meaningful completions and `followup_task` to resume the same role each round. Do not poll with repeated status calls. Never create files merely to exchange review notes; agent messages are the ledger.
+
+## Run the initial work round
+
+Tell `work_agent` to:
+
+1. Capture the initial worktree state and distinguish pre-existing changes from task changes.
+2. Trace the relevant flow and callers before editing, then implement the minimum complete change.
+3. Run verification proportional to risk. Use existing focused tests first; add one small runnable check for new non-trivial logic when the repository lacks coverage.
+4. Return `WORK ROUND 0` with:
+   - outcome and changed files;
+   - key design decisions or assumptions;
+   - exact verification commands and results;
+   - remaining uncertainty or `NEEDS_USER`, with the decision required.
+
+Relay a concise message to the current user conversation:
+
+`[Work agent · round 0] <outcome, changed files, verification evidence>`
+
+Do not wait for user input unless the worker identifies a genuine escalation under the rules below.
+
+## Review and reconcile
+
+For review round `N`, send the reviewer the original request, acceptance criteria, current worktree scope, and the latest worker report. Require inspection of the actual files and diff rather than trusting the report.
+
+The reviewer returns `REVIEW ROUND N` with either `CLEAR` or numbered findings:
+
+`R<N>.<K> | severity | file:line | claim | evidence | required outcome`
+
+Findings must be actionable and tied to a requirement, defect, regression risk, security issue, or unnecessary complexity. Exclude taste-only preferences and speculative abstractions. Preserve an existing finding ID until it is closed or withdrawn.
+
+Relay the conclusion to the user conversation:
+
+`[Review agent · round N] <CLEAR, or concise finding IDs and evidence>`
+
+If findings remain, send every open finding unchanged to `work_agent`. Require `WORK RESPONSE N` with one disposition per ID:
+
+- `FIXED`: make the edit and cite the diff plus verification.
+- `PUSHBACK`: leave the code unchanged and provide concrete evidence that the finding is invalid, outside scope, or worse than the current design.
+- `NEEDS_USER`: identify the smallest product, requirement, or technical-direction choice that only the user can make.
+
+Require the worker to rerun affected checks after edits. Relay:
+
+`[Work agent · response N] <dispositions, edits, pushback evidence, verification>`
+
+Send the response and current worktree back to the same reviewer with `followup_task`. The reviewer must:
+
+1. Verify fixes and pushback against the actual code and evidence.
+2. Mark each prior ID `CLOSED`, `WITHDRAWN`, or `OPEN`.
+3. Review the whole task state for regressions and new issues, not only the response.
+4. Assign new IDs to new findings and return the next `REVIEW ROUND`.
+
+Continue the worker-response/re-review cycle without an arbitrary round limit.
+
+## Escalate only real decisions
+
+Ask the user only when:
+
+- a requirement or technical-direction choice materially changes the correct implementation;
+- required authority or unavailable external state cannot be worked around safely; or
+- the same material finding remains open for two consecutive rounds because both roles repeat assertions without new code, a reproducible check, primary-source evidence, or other concrete evidence.
+
+Before escalating, exhaust safe in-scope inspection and verification. Present the exact unresolved finding, both positions, evidence already gathered, and the smallest decision with its tradeoff. Do not escalate an evidence-based disagreement merely because it is difficult.
+
+## Converge and hand off
+
+Convergence requires all of the following:
+
+- every finding is `CLOSED` or `WITHDRAWN`;
+- the reviewer returns `CLEAR` after inspecting the final code;
+- task-relevant verification passes at a level proportionate to risk; and
+- limitations or checks that could not be run are explicitly recorded.
+
+Then relay both final role conclusions and return one compact user-facing handoff: outcome, files changed, verification, reconciled review result, and any disclosed limitation. Do not expose internal chatter or make additional edits after the final clear review.
