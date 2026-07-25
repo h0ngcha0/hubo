@@ -9,7 +9,7 @@
 
 <p align="center">
   <strong>雙手互搏</strong><br>
-  <em>Two agents. One codebase. No finding left unresolved.</em>
+  <em>One builds. One challenges.</em>
 </p>
 
 ---
@@ -104,15 +104,6 @@ For example:
 Hubo needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository currently packages adapters for Claude Code and Codex.
 
 The workflow preserves pre-existing worktree changes, keeps the reviewer read-only, accepts justified pushback, and favors root-cause fixes over patches that merely silence a symptom.
-
-## Repository layout
-
-The host-specific wrappers are intentionally small:
-
-- `skills/hubo/` and `.codex-plugin/` package Hubo for Codex.
-- `claude/skills/hubo/` and `claude/.claude-plugin/` package it for Claude Code.
-- `claude/shared/hubo.md` contains the shared workflow.
-- `claude/shared/references/hosts.md` maps the workflow onto each host's agent primitives.
 
 ## License
 
