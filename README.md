@@ -4,6 +4,14 @@ Botong runs a two-role coding loop in one conversation: a work agent implements 
 
 The workflow preserves existing worktree changes, keeps the reviewer read-only, accepts evidence-based pushback, and applies Ponytail's root-cause and minimum-complete-change principles.
 
+## Usage
+
+Botong activates only when you explicitly select or invoke it. Ordinary programming prompts do not activate it.
+
+- **Claude Code:** use `/botong implement the change...` when the bare alias is unambiguous, or the canonical `/botong:botong implement the change...`.
+- **Codex CLI or IDE:** select `$botong:botong` for the installed plugin. Reserve `$botong` for a directly linked local skill, then provide the task.
+- **ChatGPT or Codex desktop:** type `@`, select the Botong skill, then provide the task.
+
 ## Requirements
 
 Botong needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository packages adapters for Claude Code and Codex; it does not claim packaged support for other hosts.
@@ -46,13 +54,14 @@ The Python validators require PyYAML. From the repository root, create a disposa
   "$botong_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" skills/botong
   "$botong_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
   claude plugin validate .
+  claude plugin validate ./claude/.claude-plugin/plugin.json
 )
 ```
 
 Load the checkout directly in Claude Code:
 
 ```bash
-claude --plugin-dir .
+claude --plugin-dir ./claude
 ```
 
 For direct Codex discovery, create a local skill link and start a new conversation:

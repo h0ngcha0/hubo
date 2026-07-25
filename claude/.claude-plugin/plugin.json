@@ -1,7 +1,7 @@
 {
   "name": "botong",
-  "version": "0.1.0",
-  "description": "Runs a persistent worker/reviewer loop that implements code, challenges it independently, and reconciles findings before handoff.",
+  "version": "0.1.1",
+  "description": "Adds an explicit-only worker/reviewer loop that reconciles code findings before handoff.",
   "author": {
     "name": "h0ngcha0",
     "url": "https://github.com/h0ngcha0"

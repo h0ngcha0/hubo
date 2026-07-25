@@ -7,8 +7,8 @@
   "plugins": [
     {
       "name": "botong",
-      "description": "Runs a worker/reviewer reconciliation loop before code handoff.",
-      "source": "./",
+      "description": "Adds an explicit-only worker/reviewer reconciliation loop before code handoff.",
+      "source": "./claude",
       "category": "productivity"
     }
   ]
