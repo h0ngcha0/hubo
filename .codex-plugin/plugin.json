@@ -17,7 +17,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Hubo",
-    "shortDescription": "Two hands spar. Only real decisions reach you.",
+    "shortDescription": "Two-agent code review loop",
     "longDescription": "On explicit selection, coordinate a persistent implementer and independent reviewer until every code finding is reconciled.",
     "developerName": "h0ngcha0",
     "category": "Productivity",
@@ -26,10 +26,13 @@
       "Multi-agent coordination"
     ],
     "websiteURL": "https://github.com/h0ngcha0/hubo",
+    "privacyPolicyURL": "https://github.com/h0ngcha0/hubo/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/h0ngcha0/hubo/blob/main/TERMS.md",
     "defaultPrompt": [
       "Use $hubo:hubo to implement this change and reconcile review feedback."
     ],
-    "composerIcon": "./assets/logo.png",
-    "logo": "./assets/logo.png"
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
   }
 }
