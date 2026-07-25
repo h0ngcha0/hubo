@@ -1,16 +1,15 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.png">
+    <img src="assets/logo.png" width="220" alt="Hubo, the two-handed old trickster">
+  </picture>
+</p>
+
 <h1 align="center">Hubo</h1>
 
 <p align="center">
   <strong>雙手互搏</strong><br>
   <em>Two agents. One codebase. No finding left unresolved.</em>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/github/stars/h0ngcha0/hubo?style=flat-square&color=111111&label=stars" alt="GitHub stars">
-  <img src="https://img.shields.io/badge/version-0.2.0-111111?style=flat-square" alt="Version 0.2.0">
-  <img src="https://img.shields.io/badge/Claude_Code-supported-111111?style=flat-square" alt="Claude Code supported">
-  <img src="https://img.shields.io/badge/Codex-supported-111111?style=flat-square" alt="Codex supported">
-  <img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license">
 </p>
 
 ---
