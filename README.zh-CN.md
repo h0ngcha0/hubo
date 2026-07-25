@@ -91,11 +91,38 @@ codex plugin add hubo@hubo
 
 重启 Codex 并开始一段新对话，让它发现这个技能。
 
+### GitHub Copilot CLI
+
+```bash
+copilot plugin marketplace add h0ngcha0/hubo
+copilot plugin install hubo@hubo
+```
+
+安装后开始一个新的 Copilot CLI 会话。
+
+### OpenClaw
+
+```bash
+openclaw plugins install hubo --marketplace h0ngcha0/hubo
+```
+
+安装后重启 OpenClaw gateway。
+
+### skills.sh
+
+把 Hubo 直接安装到任一受支持的宿主：
+
+```bash
+npx skills add h0ngcha0/hubo --skill hubo -g
+```
+
 ## 使用
 
 - **Claude Code：** 短名称没有歧义时使用 `/hubo 实现这个改动...`，否则使用 `/hubo:hubo 实现这个改动...`。
 - **Codex CLI：** 调用 `$hubo:hubo`，然后提供任务。
 - **ChatGPT 或 Codex 桌面应用：** 输入 `@`，选择 **Hubo**，然后提供任务。
+- **GitHub Copilot CLI：** 使用 `/hubo:hubo 实现这个改动...`。
+- **OpenClaw：** 使用 `/hubo 实现这个改动...`。
 
 例如：
 
@@ -105,7 +132,7 @@ codex plugin add hubo@hubo
 
 ## 要求
 
-Hubo 需要宿主能够创建并恢复两个可寻址的代理，并把两个代理的结果都返回给协调者。目前这个仓库为 Claude Code 和 Codex 提供适配。
+Hubo 需要宿主能够创建并恢复两个可寻址的代理，并把两个代理的结果都返回给协调者。目前这个仓库为 Claude Code、Codex、GitHub Copilot CLI 和 OpenClaw 提供适配。
 
 工作流会保留工作树中已有的改动，确保评审代理只读，接受有理有据的反驳，并优先修复根因，而不是只消除表面症状。
 

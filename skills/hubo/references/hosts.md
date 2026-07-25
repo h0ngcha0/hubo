@@ -32,6 +32,36 @@ Select this adapter when `Agent` and `SendMessage` are available.
 
 Treat reviewer isolation as mechanically read-only only when a narrow allowlist or sandbox blocks every mutation path, including file editors, notebook editors, shell/process writes, and write-capable external tools. In all cases, snapshot the worktree before and after every review and treat any reviewer mutation as an open protocol violation for the worker to reconcile. Allow reviewer shell commands only for non-destructive inspection and verification.
 
+## GitHub Copilot CLI
+
+Select this adapter when `task`, `list_agents`, `read_agent`, and `write_agent` are available.
+
+| Hubo action | GitHub Copilot CLI mapping |
+| --- | --- |
+| Create roles | Use `task` exactly twice in background mode, naming the direct children `work_agent` and `review_agent`. |
+| Reviewer standby | Prompt `review_agent` to return `READY` without inspecting files while remaining available for follow-up turns. |
+| Resume a role | Call `write_agent` with the existing agent ID; never replace the role for a new round. |
+| Wait | Use background completion notifications. Use `read_agent` once to retrieve a completed turn when needed; do not poll it. |
+| Relay | Mirror every complete top-level work/review report in the current Copilot conversation with its role and round label; repeat it in the final conversation transcript, never a file. |
+| Descendants | Permit them only when the child exposes `task`; otherwise keep bounded subwork in the owning top-level role. |
+
+Keep both background agents alive for the multi-turn reconciliation loop. Resolve their IDs from the initial `task` results or `list_agents`; use `write_agent` for every later round.
+
+## OpenClaw
+
+Select this adapter when `sessions_spawn`, `sessions_send`, and `sessions_yield` are available.
+
+| Hubo action | OpenClaw mapping |
+| --- | --- |
+| Create roles | Call `sessions_spawn` exactly twice with `mode: "run"`, `cleanup: "keep"`, and labels `work_agent` and `review_agent`. Record each returned `childSessionKey`. |
+| Reviewer standby | Give `review_agent` an initial task that returns `READY` without inspecting files. |
+| Resume a role | Call `sessions_send` with the recorded child session key and wait for its response; never create a replacement session for a new round. |
+| Wait | After the initial spawns, call `sessions_yield` and consume completion events. For later rounds, use `sessions_send` with a non-zero timeout; do not poll session status. |
+| Relay | Mirror every complete top-level work/review report in the current OpenClaw conversation with its role and round label; repeat it in the final conversation transcript, never a file. |
+| Descendants | Permit them only when that child exposes `sessions_spawn`; otherwise keep bounded subwork in the owning top-level role. |
+
+Use `sessions_history` only when a completion payload is incomplete or must be recovered; it is not the waiting mechanism.
+
 ## Capability fallbacks
 
 - If background agents are unavailable, create the reviewer first for its immediate standby return, then run the worker in the foreground. Resume both by their existing IDs.

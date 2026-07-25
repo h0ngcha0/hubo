@@ -91,11 +91,38 @@ codex plugin add hubo@hubo
 
 Restart Codex and start a new conversation so the skill is discovered.
 
+### GitHub Copilot CLI
+
+```bash
+copilot plugin marketplace add h0ngcha0/hubo
+copilot plugin install hubo@hubo
+```
+
+Start a new Copilot CLI session after installing.
+
+### OpenClaw
+
+```bash
+openclaw plugins install hubo --marketplace h0ngcha0/hubo
+```
+
+Restart the OpenClaw gateway after installing.
+
+### skills.sh
+
+Install Hubo directly into any supported host:
+
+```bash
+npx skills add h0ngcha0/hubo --skill hubo -g
+```
+
 ## Usage
 
 - **Claude Code:** `/hubo implement the change...` when the short alias is unambiguous, or `/hubo:hubo implement the change...`.
 - **Codex CLI:** invoke `$hubo:hubo`, then provide the task.
 - **ChatGPT or Codex desktop:** type `@`, select **Hubo**, then provide the task.
+- **GitHub Copilot CLI:** `/hubo:hubo implement the change...`.
+- **OpenClaw:** `/hubo implement the change...`.
 
 For example:
 
@@ -105,7 +132,7 @@ For example:
 
 ## Requirements
 
-Hubo needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository currently packages adapters for Claude Code and Codex.
+Hubo needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository currently packages adapters for Claude Code, Codex, GitHub Copilot CLI, and OpenClaw.
 
 The workflow preserves pre-existing worktree changes, keeps the reviewer read-only, accepts justified pushback, and favors root-cause fixes over patches that merely silence a symptom.
 
