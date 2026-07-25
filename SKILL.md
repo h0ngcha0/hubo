@@ -1,6 +1,6 @@
 ---
 name: botong
-description: Run a two-role worker/reviewer loop that implements, verifies, independently reviews, and reconciles code changes before returning them to the user. Use for any programming task that creates or changes code—including bug fixes, features, refactors, migrations, and tests—when collaboration agents are available.
+description: Run a two-role worker/reviewer loop that implements, verifies, independently reviews, and reconciles code changes before returning them to the user. Use for any programming task that creates or changes code—including bug fixes, features, refactors, migrations, and tests—on Codex, Claude Code, or another host with mapped collaboration agents.
 ---
 
 # Botong — Two Hands, One Mind
@@ -15,6 +15,10 @@ Like Zhou Botong's Technique of Ambidexterity (雙手互搏), the work and revie
 3. State only assumptions that affect the result. Derive concrete acceptance criteria and proportionate verification from the request.
 4. Honor all active skills and instructions. In particular, apply Ponytail and simplicity principles: understand the full path before editing, reuse existing code, prefer standard or native features, fix root causes in shared paths, keep the diff surgical, and leave the smallest runnable check for non-trivial logic.
 
+## Select the host adapter
+
+Before creating either role, read [references/hosts.md](references/hosts.md) completely. Detect the current host from the agent tools actually exposed, select exactly one mapped adapter, and follow its lifecycle and fallback rules. Never mix tool names from different hosts or guess an unavailable capability.
+
 ## Create exactly two top-level roles
 
 Spawn exactly two direct children in the same collaboration tree, once:
@@ -26,7 +30,7 @@ Do not create a third top-level child or replace either role during the loop. Ei
 
 In the review agent's initial task, tell it to stand by without inspecting the worktree until it receives a completed work round. Start the work agent immediately. With limited concurrency, prefer the two persistent roles over descendants.
 
-Use `wait_agent` for meaningful completions and `followup_task` to resume the same role each round. Do not poll with repeated status calls. Never create files merely to exchange review notes; agent messages are the ledger.
+Use the selected adapter's mapped wait operation for meaningful completions and its mapped resume/message operation to continue the same role each round. Do not poll with repeated status calls. Never create files merely to exchange review notes; agent messages are the ledger.
 
 ## Run the initial work round
 
@@ -71,7 +75,7 @@ Require the worker to rerun affected checks after edits. Relay:
 
 `[Work agent · response N] <dispositions, edits, pushback evidence, verification>`
 
-Send the response and current worktree back to the same reviewer with `followup_task`. The reviewer must:
+Send the response and current worktree back to the same reviewer with the selected adapter's mapped resume/message operation. The reviewer must:
 
 1. Verify fixes and pushback against the actual code and evidence.
 2. Mark each prior ID `CLOSED`, `WITHDRAWN`, or `OPEN`.
