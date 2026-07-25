@@ -1,6 +1,0 @@
-interface:
-  display_name: "Botong — Two Hands, One Mind"
-  short_description: "Two hands: one builds, one challenges"
-  default_prompt: "Use $botong:botong to implement this programming change with one hand building and the other challenging until the code is reconciled."
-policy:
-  allow_implicit_invocation: false

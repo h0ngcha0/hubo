@@ -1,42 +1,42 @@
-# Botong — Two Hands, One Mind
+# Hubo — Two Hands, One Mind
 
-Botong runs a two-role coding loop in one conversation: a work agent implements and verifies the change, while an independent review agent challenges it. The same two agents reconcile numbered findings until the review is clear or a real user decision is needed.
+Hubo runs a two-role coding loop in one conversation: a work agent implements and verifies the change, while an independent review agent challenges it. The same two agents reconcile numbered findings until the review is clear or a real user decision is needed.
 
 The workflow preserves existing worktree changes, keeps the reviewer read-only, accepts evidence-based pushback, and applies Ponytail's root-cause and minimum-complete-change principles.
 
 ## Usage
 
-Botong activates only when you explicitly select or invoke it. Ordinary programming prompts do not activate it.
+Hubo activates only when you explicitly select or invoke it. Ordinary programming prompts do not activate it.
 
-- **Claude Code:** use `/botong implement the change...` when the bare alias is unambiguous, or the canonical `/botong:botong implement the change...`.
-- **Codex CLI or IDE:** select `$botong:botong` for the installed plugin. Reserve `$botong` for a directly linked local skill, then provide the task.
-- **ChatGPT or Codex desktop:** type `@`, select the Botong skill, then provide the task.
+- **Claude Code:** use `/hubo implement the change...` when the bare alias is unambiguous, or the canonical `/hubo:hubo implement the change...`.
+- **Codex CLI or IDE:** select `$hubo:hubo` for the installed plugin. Reserve `$hubo` for a directly linked local skill, then provide the task.
+- **ChatGPT or Codex desktop:** type `@`, select the Hubo skill, then provide the task.
 
 ## Requirements
 
-Botong needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository packages adapters for Claude Code and Codex; it does not claim packaged support for other hosts.
+Hubo needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository packages adapters for Claude Code and Codex; it does not claim packaged support for other hosts.
 
 ## Install
 
-These commands assume this repository is published at `github.com/h0ngcha0/botong`.
+These commands assume this repository is published at `github.com/h0ngcha0/hubo`.
 
 ### Claude Code
 
 Run these as two separate prompts:
 
 ```text
-/plugin marketplace add h0ngcha0/botong
+/plugin marketplace add h0ngcha0/hubo
 ```
 
 ```text
-/plugin install botong@botong
+/plugin install hubo@hubo
 ```
 
 ### Codex
 
 ```bash
-codex plugin marketplace add h0ngcha0/botong
-codex plugin add botong@botong
+codex plugin marketplace add h0ngcha0/hubo
+codex plugin add hubo@hubo
 ```
 
 Start a new conversation after installation so the skill is discovered.
@@ -47,12 +47,12 @@ The Python validators require PyYAML. From the repository root, create a disposa
 
 ```bash
 (
-  botong_validator_dir="$(mktemp -d)"
-  trap 'rm -rf "$botong_validator_dir"' EXIT
-  python3 -m venv "$botong_validator_dir"
-  "$botong_validator_dir/bin/python" -m pip install PyYAML
-  "$botong_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" skills/botong
-  "$botong_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
+  hubo_validator_dir="$(mktemp -d)"
+  trap 'rm -rf "$hubo_validator_dir"' EXIT
+  python3 -m venv "$hubo_validator_dir"
+  "$hubo_validator_dir/bin/python" -m pip install PyYAML
+  "$hubo_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" skills/hubo
+  "$hubo_validator_dir/bin/python" "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
   claude plugin validate .
   claude plugin validate ./claude/.claude-plugin/plugin.json
 )
@@ -68,10 +68,10 @@ For direct Codex discovery, create a local skill link and start a new conversati
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-ln -s "$PWD/skills/botong" "${CODEX_HOME:-$HOME/.codex}/skills/botong"
+ln -s "$PWD/skills/hubo" "${CODEX_HOME:-$HOME/.codex}/skills/hubo"
 ```
 
-If that destination already exists, confirm it resolves to this checkout; do not overwrite it. In the new conversation, ask Codex to use Botong on a coding change.
+If that destination already exists, confirm it resolves to this checkout; do not overwrite it. In the new conversation, ask Codex to use Hubo on a coding change.
 
 ## License
 

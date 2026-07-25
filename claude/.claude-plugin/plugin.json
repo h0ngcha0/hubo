@@ -1,12 +1,12 @@
 {
-  "name": "botong",
-  "version": "0.1.1",
+  "name": "hubo",
+  "version": "0.2.0",
   "description": "Adds an explicit-only worker/reviewer loop that reconciles code findings before handoff.",
   "author": {
     "name": "h0ngcha0",
     "url": "https://github.com/h0ngcha0"
   },
-  "homepage": "https://github.com/h0ngcha0/botong",
-  "repository": "https://github.com/h0ngcha0/botong",
+  "homepage": "https://github.com/h0ngcha0/hubo",
+  "repository": "https://github.com/h0ngcha0/hubo",
   "license": "MIT"
 }

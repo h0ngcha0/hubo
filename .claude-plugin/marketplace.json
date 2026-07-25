@@ -1,12 +1,12 @@
 {
-  "name": "botong",
+  "name": "hubo",
   "owner": {
     "name": "h0ngcha0",
     "url": "https://github.com/h0ngcha0"
   },
   "plugins": [
     {
-      "name": "botong",
+      "name": "hubo",
       "description": "Adds an explicit-only worker/reviewer reconciliation loop before code handoff.",
       "source": "./claude",
       "category": "productivity"

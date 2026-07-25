@@ -1,14 +1,14 @@
 {
-  "name": "botong",
+  "name": "hubo",
   "interface": {
-    "displayName": "Botong"
+    "displayName": "Hubo"
   },
   "plugins": [
     {
-      "name": "botong",
+      "name": "hubo",
       "source": {
         "source": "url",
-        "url": "https://github.com/h0ngcha0/botong.git",
+        "url": "https://github.com/h0ngcha0/hubo.git",
         "ref": "main"
       },
       "policy": {

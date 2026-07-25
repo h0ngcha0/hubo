@@ -1,4 +1,4 @@
-# Botong — Two Hands, One Mind
+# Hubo — Two Hands, One Mind
 
 Coordinate one writing lineage and one independent, read-only reviewing lineage in the current conversation. Keep the user informed with concise role-labeled evidence while the two roles iterate to convergence.
 Like Zhou Botong's Technique of Ambidexterity (雙手互搏), the work and review lineages act as two independent hands: one builds while the other challenges.
