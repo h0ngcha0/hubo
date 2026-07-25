@@ -18,7 +18,7 @@
 
 ---
 
-[Zhou Botong](https://en.wikipedia.org/wiki/Zhou_Botong) is one of wuxia's great eccentrics: a legendary martial artist with the temperament of a mischievous child. When ordinary practice becomes too ordinary, he invents something delightfully absurd — the **Technique of Ambidexterity** (双手互搏).
+[Zhou Botong](https://en.wikipedia.org/wiki/Zhou_Botong) is one of [wuxia](https://en.wikipedia.org/wiki/Wuxia)'s great eccentrics: a legendary martial artist with the temperament of a mischievous child. When ordinary practice becomes too ordinary, he invents something delightfully absurd — the **Technique of Ambidexterity** (双手互搏).
 
 He teaches each hand to act independently. One hand attacks; the other answers. Each uses a different martial art. The same person becomes both opponents, and the sparring continues until neither hand can surprise the other.
 
