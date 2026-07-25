@@ -1,6 +1,6 @@
 {
   "name": "hubo",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Two agents implement and review each code change until every finding is resolved, so you only spend time on decisions that need you.",
   "author": {
     "name": "h0ngcha0",
