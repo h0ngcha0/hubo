@@ -28,6 +28,18 @@ Hubo puts that little duel inside your coding agent.
 
 The name comes from **互搏** (*hùbó*): to spar with each other. Not two agents politely taking turns, and not a reviewer saying “looks good” from the doorway. Two hands spar over every change. Only real decisions reach you. They exchange evidence until the code — not either agent's ego — wins.
 
+<div align="center">
+<table>
+  <tr>
+    <td align="center"><strong>Works<br>with</strong></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
+  </tr>
+</table>
+</div>
+
 ## Before / after
 
 Without Hubo, an agent implements the feature, runs a test, reviews its own reasoning, and hands the result to you. The author, tester, and reviewer all share the same blind spots.
