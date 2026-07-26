@@ -72,7 +72,8 @@ Hubo 只在显式调用时运行。普通的编程请求仍然只是普通请求
     <td align="center"><strong>支持</strong></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
-    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/openai/FFFFFF"><img src="https://cdn.simpleicons.org/openai/000000" width="32" alt="Codex CLI"></picture><br><sub>Codex CLI</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/bash.svg" width="32" alt="Bash"><br><sub>Bash</sub></td>
     <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
   </tr>
 </table>
