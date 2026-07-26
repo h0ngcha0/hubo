@@ -28,18 +28,6 @@ Hubo 把这场小小的对决放进你的编程智能体。
 
 Hubo 取自**互搏**（*hùbó*）：彼此过招。不是两个智能体客气地轮流发言，也不是评审者站在门口说一句“看起来不错”。双手过招，打磨每次改动。只有真正需要你拍板的问题，才会交到你手上。它们交换证据，直到代码本身——而不是任何一个智能体的自尊心——胜出。
 
-<div align="center">
-<table>
-  <tr>
-    <td align="center"><strong>支持</strong></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
-  </tr>
-</table>
-</div>
-
 ## 前后对比
 
 没有 Hubo 时，一个智能体会实现功能、跑测试、复查自己的推理，然后把结果交给你。作者、测试者和评审者共享同样的盲区。
@@ -77,6 +65,18 @@ Hubo 在同一段对话中保持两个持续存在的角色：
 评审智能体可以派出专家，工作智能体也可以委派实现任务。但最上层的结构始终不变：一只手创造，另一只手检验创造的结果。
 
 Hubo 只在显式调用时运行。普通的编程请求仍然只是普通请求。
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center"><strong>支持</strong></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/openai/FFFFFF"><img src="https://cdn.simpleicons.org/openai/000000" width="32" alt="Codex CLI"></picture><br><sub>Codex CLI</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
+  </tr>
+</table>
+</div>
 
 ## 安装
 
@@ -141,12 +141,6 @@ npx skills add h0ngcha0/hubo --skill hubo -g
 ```text
 /hubo 为购物车实现乐观更新
 ```
-
-## 要求
-
-Hubo 需要宿主能够创建并恢复两个可寻址的智能体，并把两个智能体的结果都返回给协调者。目前这个仓库为 Claude Code、Codex、GitHub Copilot CLI 和 OpenClaw 提供适配。
-
-工作流会保留工作树中已有的改动，确保评审智能体只读，接受有理有据的反驳，并优先修复根因，而不是只消除表面症状。
 
 ## 许可证
 

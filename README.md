@@ -28,18 +28,6 @@ Hubo puts that little duel inside your coding agent.
 
 The name comes from **互搏** (*hùbó*): to spar with each other. Not two agents politely taking turns, and not a reviewer saying “looks good” from the doorway. Two hands spar over every change. Only real decisions reach you. They exchange evidence until the code — not either agent's ego — wins.
 
-<div align="center">
-<table>
-  <tr>
-    <td align="center"><strong>Works<br>with</strong></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
-    <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
-  </tr>
-</table>
-</div>
-
 ## Before / after
 
 Without Hubo, an agent implements the feature, runs a test, reviews its own reasoning, and hands the result to you. The author, tester, and reviewer all share the same blind spots.
@@ -77,6 +65,18 @@ The loop ends when:
 The reviewer may spawn specialists. The worker may delegate implementation. But at the top level the shape remains the same: one hand makes, one hand tests the making.
 
 Hubo is explicit-only. It does nothing until you invoke it; ordinary coding prompts remain ordinary.
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center"><strong>Works<br>with</strong></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
+    <td align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/openai/FFFFFF"><img src="https://cdn.simpleicons.org/openai/000000" width="32" alt="Codex CLI"></picture><br><sub>Codex CLI</sub></td>
+    <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
+  </tr>
+</table>
+</div>
 
 ## Install
 
@@ -141,12 +141,6 @@ For example:
 ```text
 /hubo implement optimistic updates for the cart
 ```
-
-## Requirements
-
-Hubo needs a host that can create and resume two addressable agents and return both agents' results to the coordinator. This repository currently packages adapters for Claude Code, Codex, GitHub Copilot CLI, and OpenClaw.
-
-The workflow preserves pre-existing worktree changes, keeps the reviewer read-only, accepts justified pushback, and favors root-cause fixes over patches that merely silence a symptom.
 
 ## License
 
