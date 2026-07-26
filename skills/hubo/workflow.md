@@ -4,12 +4,32 @@ Coordinate one writing lineage and one independent, read-only reviewing lineage 
 Like Zhou Botong's Technique of Ambidexterity (雙手互搏), the work and review lineages act as two independent hands: one builds while the other challenges.
 Treat text accompanying the explicit invocation as the task. If none is provided, ask for the task before creating either role.
 
+## Apply the shared core principles
+
+Apply this ordered list to the coordinator, both top-level roles, and every descendant. Include the complete list in both initial role prompts; it remains binding in every later round.
+
+1. **[Karpathy-inspired coding discipline](https://github.com/multica-ai/andrej-karpathy-skills).**
+   - Think before coding: surface material assumptions, ambiguity, tradeoffs, and warranted pushback.
+   - Prefer the simplest complete solution: add no speculative features, abstractions, or configurability.
+   - Make surgical changes: touch only task-relevant code, match existing style, and clean up only what the change makes obsolete.
+   - Work toward verifiable goals: derive acceptance criteria, use a brief plan for multi-step work, and loop until proportionate checks pass.
+2. **[Ponytail](https://github.com/DietrichGebert/ponytail).**
+   Understand the relevant flow first, then stop at the first rung that solves the task: do nothing when nothing is needed; reuse the codebase; use the standard library; use a native platform feature; use an already-installed dependency; use one line; only then write the minimum new code. Fix root causes in shared paths rather than symptoms. Never simplify away trust-boundary validation, data-loss prevention, security, accessibility, hardware calibration, or explicit requirements. Leave one small runnable check for new non-trivial logic.
+3. **Evidence over assertion.**
+   Base implementation and review claims on the actual request, repository instructions, code, diff, reproducible checks, or primary-source documentation. State uncertainty instead of inventing certainty.
+4. **Independent challenge, shared objective.**
+   The reviewer tries to falsify the implementation without editing it. The worker considers every finding but may push back with evidence. Neither role raises taste-only preferences, speculative abstractions, or work outside the request.
+5. **User attention is the last resort.**
+   Resolve everything that code, inspection, tests, or primary evidence can decide. Escalate only a genuine requirement, authority, or technical-direction choice.
+
+When instructions conflict, follow system and host constraints first, then the user's request and repository instructions. Never use simplicity to override correctness or safety.
+
 ## Establish the contract
 
 1. Read the request and all applicable repository instructions, including `AGENTS.md`.
 2. Preserve user-owned worktree changes. Never reset, checkout, clean, stash, delete, or rewrite unrelated changes.
 3. State only assumptions that affect the result. Derive concrete acceptance criteria and proportionate verification from the request.
-4. Honor all active skills and instructions. In particular, apply Ponytail and simplicity principles: understand the full path before editing, reuse existing code, prefer standard or native features, fix root causes in shared paths, keep the diff surgical, and leave the smallest runnable check for non-trivial logic.
+4. Honor all active skills and instructions together with the shared core principles above.
 
 ## Select the host adapter
 
@@ -38,7 +58,7 @@ Spawn exactly two direct children in the same collaboration tree, once:
 
 Do not create a third top-level child or replace either role during the loop. Either role may spawn descendants for bounded independent subtasks when useful and capacity permits; descendants stay categorized by their parent lineage and inherit its write boundary. Do not hardcode a model or provider.
 
-In the review agent's initial task, tell it to stand by without inspecting the worktree until it receives a completed work round. Start the work agent immediately. With limited concurrency, prefer the two persistent roles over descendants.
+Give both roles the original request, acceptance criteria, applicable repository instructions, and the complete shared core principles. In the review agent's initial task, tell it to stand by without inspecting the worktree until it receives a completed work round. Start the work agent immediately. With limited concurrency, prefer the two persistent roles over descendants.
 
 Use the selected adapter's mapped wait operation for meaningful completions and its mapped resume/message operation to continue the same role each round. Do not poll with repeated status calls. Never create files merely to exchange review notes; agent messages are the ledger.
 
@@ -47,7 +67,7 @@ Use the selected adapter's mapped wait operation for meaningful completions and 
 Tell `work_agent` to:
 
 1. Capture the initial worktree state and distinguish pre-existing changes from task changes.
-2. Trace the relevant flow and callers before editing, then implement the minimum complete change.
+2. Apply the shared core principles: trace the relevant flow and callers before editing, climb the Ponytail ladder, then implement the minimum complete change.
 3. Run verification proportional to risk. Use existing focused tests first; add one small runnable check for new non-trivial logic when the repository lacks coverage.
 4. Return `WORK ROUND 0` with:
    - outcome and changed files;
@@ -67,7 +87,7 @@ The reviewer returns `REVIEW ROUND N` with either `CLEAR` or numbered findings:
 
 `R<N>.<K> | severity | file:line | claim | evidence | required outcome`
 
-Findings must be actionable and tied to a requirement, defect, regression risk, security issue, or unnecessary complexity. Exclude taste-only preferences and speculative abstractions. Preserve an existing finding ID until it is closed or withdrawn.
+Findings must apply the shared core principles and be actionable and tied to a requirement, defect, regression risk, security issue, or unnecessary complexity. The reviewer must challenge over-engineering as well as under-engineering, and must not demand code below the first Ponytail rung that safely satisfies the task. Exclude taste-only preferences and speculative abstractions. Preserve an existing finding ID until it is closed or withdrawn.
 
 Mirror the complete returned `REVIEW ROUND N` report into the current user conversation.
 
