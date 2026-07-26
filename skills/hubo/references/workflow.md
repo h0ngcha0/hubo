@@ -33,7 +33,7 @@ When instructions conflict, follow system and host constraints first, then the u
 
 ## Select the host adapter
 
-Before creating either role, read [references/hosts.md](references/hosts.md) completely. Detect the current host from the agent tools actually exposed, select exactly one mapped adapter, and follow its lifecycle and fallback rules. Never mix tool names from different hosts or guess an unavailable capability.
+Before creating either role, read [hosts.md](hosts.md) completely. Detect the current host from the agent tools actually exposed, select exactly one mapped adapter, and follow its lifecycle and fallback rules. Never mix tool names from different hosts or guess an unavailable capability.
 
 ## Keep the worker/reviewer exchange reviewable
 

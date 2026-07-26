@@ -10,7 +10,7 @@ Run Hubo only after explicit user activation. Coordinate exactly two persistent 
 - a pragmatic work agent whose lineage alone may edit files; and
 - an independent, read-only review agent that challenges the implementation and its evidence.
 
-Read [the complete Hubo workflow](workflow.md) before creating either role. Select exactly one current host from [the supported host adapters](references/hosts.md); never mix host APIs.
+Read [the complete Hubo workflow](references/workflow.md) before creating either role. Select exactly one current host from [the supported host adapters](references/hosts.md); never mix host APIs.
 
 The work agent implements the smallest complete change and reports its diff, decisions, and verification. The review agent inspects the actual code and returns `CLEAR` or numbered findings. Relay every finding back to the same work agent, which must respond `FIXED`, `PUSHBACK`, or `NEEDS_USER` with evidence. Resume the same reviewer to verify the response, then continue without an arbitrary round limit.
 
