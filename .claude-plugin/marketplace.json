@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "hubo",
-      "description": "Adds an explicit-only worker/reviewer reconciliation loop before code handoff.",
+      "description": "Adds explicit two-agent reconciliation loops for implementation and critical review.",
       "source": "./",
       "category": "productivity"
     }

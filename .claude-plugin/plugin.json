@@ -1,7 +1,7 @@
 {
   "name": "hubo",
   "version": "0.4.4",
-  "description": "Two agents implement and review each code change until every finding is resolved, so you only spend time on decisions that need you.",
+  "description": "Two agents reconcile implementation or critical review, so only genuine decisions reach you.",
   "author": {
     "name": "h0ngcha0",
     "url": "https://github.com/h0ngcha0"

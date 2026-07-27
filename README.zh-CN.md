@@ -49,7 +49,18 @@ Hubo 取自**互搏**（*hùbó*）：彼此过招。不是两个智能体客气
 
 ## 工作原理
 
-Hubo 在同一段对话中保持两个持续存在的角色：
+Hubo 提供两种需要显式调用的模式：
+
+| 模式 | 双手 | 结果 |
+|---|---|---|
+| **`/hubo`** | 实现智能体 ↔ 评审智能体 | 经过测试、所有问题均已协调解决的代码。 |
+| **`/hubo:hubo-review`** | 主评审智能体 ↔ 批判评审智能体 | 聚焦指定目标的评审；误报受到质疑，遗漏风险得到检查。 |
+
+两种模式都在同一段对话中保持两个持续存在的角色，并遵循同一个过程：产出、质疑、修改或反驳、继续交锋。
+
+### 默认模式：实现
+
+默认模式包含以下角色：
 
 | 手 | 职责 |
 |---|---|
@@ -64,7 +75,7 @@ Hubo 在同一段对话中保持两个持续存在的角色：
 
 评审智能体可以派出专家，工作智能体也可以委派实现任务。但最上层的结构始终不变：一只手创造，另一只手检验创造的结果。
 
-Hubo 只在显式调用时运行。普通的编程请求仍然只是普通请求。
+两种模式的触发说明都要求显式调用；普通的编程请求仍然只是普通请求。Codex 还通过插件策略强制执行这一点。
 
 <div align="center">
 <table>
@@ -121,26 +132,35 @@ openclaw plugins install hubo --marketplace h0ngcha0/hubo
 
 安装后重启 OpenClaw gateway。
 
-### skills.sh
+### skills.sh（可选的独立安装）
 
-把 Hubo 直接安装到任一受支持的宿主：
+把 Hubo 的两个技能直接安装到任一受支持的宿主：
 
 ```bash
-npx skills add h0ngcha0/hubo --skill hubo -g
+npx skills add h0ngcha0/hubo --skill hubo hubo-review -g
 ```
 
 ## 使用
 
-- **Claude Code：** 短名称没有歧义时使用 `/hubo 实现这个改动...`，否则使用 `/hubo:hubo 实现这个改动...`。
-- **Codex CLI：** 调用 `$hubo:hubo`，然后提供任务。
-- **ChatGPT 或 Codex 桌面应用：** 输入 `@`，选择 **Hubo**，然后提供任务。
-- **GitHub Copilot CLI：** 使用 `/hubo:hubo 实现这个改动...`。
-- **OpenClaw：** 使用 `/hubo 实现这个改动...`。
+### 通过插件安装
+
+- **Claude Code：** `/hubo`（或 `/hubo:hubo`）和 `/hubo:hubo-review`。
+- **Codex CLI：** `$hubo:hubo` 和 `$hubo:hubo-review`。
+- **ChatGPT 或 Codex 桌面应用：** 输入 `@`，然后选择 **Hubo** 或 **Hubo Review**。
+- **GitHub Copilot CLI：** `/hubo:hubo` 和 `/hubo:hubo-review`。
+- **OpenClaw：** `/skill hubo` 和 `/skill hubo-review`。
+
+### 通过 skills.sh 独立安装
+
+- **Claude Code 或 GitHub Copilot CLI：** `/hubo` 和 `/hubo-review`。
+- **Codex：** `$hubo` 和 `$hubo-review`。
+- **OpenClaw：** `/skill hubo` 和 `/skill hubo-review`。
 
 例如：
 
 ```text
 /hubo 为购物车实现乐观更新
+/hubo:hubo-review 评审当前分支的身份验证改动
 ```
 
 ## 许可证

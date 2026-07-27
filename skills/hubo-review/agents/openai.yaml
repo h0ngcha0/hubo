@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hubo Review"
+  short_description: "Review without editing; challenge every finding"
+  default_prompt: "Use $hubo:hubo-review to review this code without editing and critically reconcile every finding."
+policy:
+  allow_implicit_invocation: false

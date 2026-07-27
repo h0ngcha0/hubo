@@ -1,6 +1,6 @@
 interface:
-  display_name: "Hubo — Two Hands, One Mind"
-  short_description: "Two hands spar. Only real decisions reach you."
+  display_name: "Hubo"
+  short_description: "Implement code; reconcile every review finding"
   default_prompt: "Use $hubo:hubo to implement this programming change with one hand building and the other challenging until the code is reconciled."
 policy:
   allow_implicit_invocation: false

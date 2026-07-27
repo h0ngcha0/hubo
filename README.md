@@ -49,7 +49,18 @@ You see the work only after every concrete finding is resolved, unless the remai
 
 ## How it works
 
-Hubo keeps two persistent roles in the same conversation:
+Hubo has two explicit modes:
+
+| Mode | Two hands | Result |
+|---|---|---|
+| **`/hubo`** | Implementer ↔ reviewer | Tested code with every finding reconciled. |
+| **`/hubo:hubo-review`** | Main reviewer ↔ critical reviewer | A targeted review with false positives challenged and missed risks checked. |
+
+Both modes keep two persistent roles in the same conversation and use the same shape: produce, challenge, revise or defend, repeat.
+
+### Default mode: implementation
+
+The default mode keeps these roles:
 
 | Hand | Role |
 |---|---|
@@ -64,7 +75,7 @@ The loop ends when:
 
 The reviewer may spawn specialists. The worker may delegate implementation. But at the top level the shape remains the same: one hand makes, one hand tests the making.
 
-Hubo is explicit-only. It does nothing until you invoke it; ordinary coding prompts remain ordinary.
+Both modes require explicit invocation in their trigger instructions; ordinary coding prompts remain ordinary. Codex also enforces this through plugin policy.
 
 <div align="center">
 <table>
@@ -121,26 +132,35 @@ openclaw plugins install hubo --marketplace h0ngcha0/hubo
 
 Restart the OpenClaw gateway after installing.
 
-### skills.sh
+### skills.sh (optional standalone install)
 
-Install Hubo directly into any supported host:
+Install both Hubo skills directly into any supported host:
 
 ```bash
-npx skills add h0ngcha0/hubo --skill hubo -g
+npx skills add h0ngcha0/hubo --skill hubo hubo-review -g
 ```
 
 ## Usage
 
-- **Claude Code:** `/hubo implement the change...` when the short alias is unambiguous, or `/hubo:hubo implement the change...`.
-- **Codex CLI:** invoke `$hubo:hubo`, then provide the task.
-- **ChatGPT or Codex desktop:** type `@`, select **Hubo**, then provide the task.
-- **GitHub Copilot CLI:** `/hubo:hubo implement the change...`.
-- **OpenClaw:** `/hubo implement the change...`.
+### Plugin installation
+
+- **Claude Code:** `/hubo` (or `/hubo:hubo`) and `/hubo:hubo-review`.
+- **Codex CLI:** `$hubo:hubo` and `$hubo:hubo-review`.
+- **ChatGPT or Codex desktop:** type `@`, then select **Hubo** or **Hubo Review**.
+- **GitHub Copilot CLI:** `/hubo:hubo` and `/hubo:hubo-review`.
+- **OpenClaw:** `/skill hubo` and `/skill hubo-review`.
+
+### Standalone skills.sh installation
+
+- **Claude Code or GitHub Copilot CLI:** `/hubo` and `/hubo-review`.
+- **Codex:** `$hubo` and `$hubo-review`.
+- **OpenClaw:** `/skill hubo` and `/skill hubo-review`.
 
 For example:
 
 ```text
 /hubo implement optimistic updates for the cart
+/hubo:hubo-review review the authentication changes on this branch
 ```
 
 ## License

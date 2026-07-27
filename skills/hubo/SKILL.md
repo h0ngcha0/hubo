@@ -1,6 +1,6 @@
 ---
 name: hubo
-description: Run a two-role worker/reviewer loop that implements, verifies, independently reviews, and reconciles code changes before returning them to the user. Activate only when the user explicitly invokes, selects, or mentions Hubo for a programming task.
+description: Implements and tests code while an independent reviewer challenges every change until all findings are reconciled. Use only when the user explicitly invokes, selects, or mentions Hubo for a programming task.
 ---
 
 # Hubo
