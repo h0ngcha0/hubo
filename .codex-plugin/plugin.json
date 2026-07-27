@@ -17,7 +17,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Hubo",
-    "shortDescription": "Two-agent implementation and review loops",
+    "shortDescription": "Two-agent code review loops",
     "longDescription": "On explicit selection, coordinate two persistent agents that reconcile code changes or critically validate reviews.",
     "developerName": "h0ngcha0",
     "category": "Productivity",
