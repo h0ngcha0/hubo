@@ -22,11 +22,28 @@ Use the first available host:
 
 Create each role once and reuse its ID for every round. The critic's initial task returns only `READY`. Optional descendants inherit their parent's read-only boundary. If the host cannot create and resume two addressable roles, ask whether the user accepts a sequential single-agent fallback.
 
-Both lineages are read-only. Block mutation tools mechanically when possible. Otherwise compare content-sensitive before/after evidence for the user-specified mutable target around every role turn; use target-specific evidence when no worktree represents it and report when the boundary cannot be verified. Both roles apply Hubo's [Karpathy-inspired discipline](https://github.com/multica-ai/andrej-karpathy-skills), [Ponytail](https://github.com/DietrichGebert/ponytail), evidence over assertion, independent challenge, and user attention only as a last resort.
+Both lineages are read-only. Block mutation tools mechanically when possible. Otherwise compare content-sensitive before/after evidence for the user-specified mutable target around every role turn; use target-specific evidence when no worktree represents it and report when the boundary cannot be verified.
+
+## Shared core principles
+
+Apply this complete list to the coordinator, both roles, and every descendant. Include it in both initial role prompts; it remains binding in every later round.
+
+1. **[Karpathy-inspired coding discipline](https://github.com/multica-ai/andrej-karpathy-skills).**
+   Think before acting: surface material assumptions, ambiguity, tradeoffs, and warranted pushback. Prefer the simplest complete approach, make surgical changes, derive verifiable acceptance criteria, and run proportionate checks.
+2. **[Ponytail](https://github.com/DietrichGebert/ponytail).**
+   Understand the relevant flow first, then stop at the first rung that solves the task: do nothing when nothing is needed; reuse the codebase; use the standard library; use a native platform feature; use an already-installed dependency; use one line; only then require the minimum new code. Prefer root-cause fixes and never simplify away correctness, safety, or explicit requirements.
+3. **Evidence over assertion.**
+   Base findings and challenges on the request, repository instructions, actual target, diff, reproducible checks, or primary-source documentation. State uncertainty instead of inventing certainty.
+4. **Independent challenge, shared objective.**
+   The critic tries to falsify the review. The reviewer considers every critique but may defend a finding with evidence. Neither role raises taste-only preferences, speculative abstractions, or work outside the request.
+5. **User attention is the last resort.**
+   Resolve everything that inspection, tests, or primary evidence can decide. Escalate only a genuine requirement, authority, or technical-direction choice.
+
+The links above provide attribution only. The inlined principles are the operative instructions; never rely on a role opening an external URL.
 
 ## Loop
 
-1. Give both roles the request, target, repository instructions, and review criteria.
+1. Give both roles the request, target, repository instructions, review criteria, and the complete shared core principles above.
 2. Require `REVIEW ROUND 0`: inspected scope, exact checks, limitations, and `CLEAR` or findings:
    `F<K> | severity | location | claim | evidence | required outcome`
 3. Send the complete review to the critic. Require `CRITIQUE ROUND N`: `CLEAR` or:

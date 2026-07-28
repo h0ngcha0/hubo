@@ -22,6 +22,8 @@ Apply this ordered list to the coordinator, both top-level roles, and every desc
 5. **User attention is the last resort.**
    Resolve everything that code, inspection, tests, or primary evidence can decide. Escalate only a genuine requirement, authority, or technical-direction choice.
 
+The links above provide attribution only. The inlined principles are the operative instructions; never rely on a role opening an external URL.
+
 When instructions conflict, follow system and host constraints first, then the user's request and repository instructions. Never use simplicity to override correctness or safety.
 
 ## Establish the contract
