@@ -1,6 +1,7 @@
 ---
 name: hubo
 description: Implements and tests code while an independent reviewer challenges every change until all findings are reconciled. Use only when the user explicitly invokes, selects, or mentions Hubo for a programming task.
+disable-model-invocation: true
 ---
 
 # Hubo

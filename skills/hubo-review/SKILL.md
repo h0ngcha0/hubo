@@ -1,6 +1,7 @@
 ---
 name: hubo-review
 description: Reviews without editing, then has a critic challenge every finding and missed risk until the review is reconciled. Use only when the user explicitly invokes or selects Hubo Review for code, diffs, pull requests, tests, designs, or technical claims.
+disable-model-invocation: true
 ---
 
 # Hubo Review
