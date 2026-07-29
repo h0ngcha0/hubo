@@ -84,6 +84,7 @@ Both modes require explicit invocation in their trigger instructions; ordinary c
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
+    <td align="center"><img src="https://opencode.ai/favicon.svg" width="32" alt="OpenCode"><br><sub>OpenCode</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/bash.svg" width="32" alt="Bash"><br><sub>Bash</sub></td>
     <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
   </tr>
@@ -132,6 +133,14 @@ openclaw plugins install hubo --marketplace h0ngcha0/hubo
 
 Restart the OpenClaw gateway after installing.
 
+### OpenCode
+
+```bash
+npx skills add h0ngcha0/hubo --skill hubo hubo-review --agent opencode -g -y
+```
+
+Start a new OpenCode session after installing.
+
 ### skills.sh (optional standalone install)
 
 Install both Hubo skills directly into any supported host:
@@ -154,6 +163,7 @@ npx skills add h0ngcha0/hubo --skill hubo hubo-review -g
 
 - **Claude Code or GitHub Copilot CLI:** `/hubo` and `/hubo-review`.
 - **Codex:** `$hubo` and `$hubo-review`.
+- **OpenCode:** `/hubo` and `/hubo-review`; use `/skills` to open the skill picker.
 - **OpenClaw:** `/skill hubo` and `/skill hubo-review`.
 
 For example:

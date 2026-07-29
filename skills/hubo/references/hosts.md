@@ -47,6 +47,21 @@ Select this adapter when `task`, `list_agents`, `read_agent`, and `write_agent` 
 
 Keep both background agents alive for the multi-turn reconciliation loop. Resolve their IDs from the initial `task` results or `list_agents`; use `write_agent` for every later round.
 
+## OpenCode
+
+Select this adapter when `task` is available and accepts `task_id` to resume a prior child session.
+
+| Hubo action | OpenCode mapping |
+| --- | --- |
+| Create roles | Call `task` twice with the `general` subagent type and the two role names required by the invoking skill as their descriptions. Create the standby role first, then the active role, and record each returned task ID. |
+| Standby | Prompt the mode-designated standby role to return `READY` without inspecting files. The completed child session remains resumable by task ID. |
+| Resume a role | Call `task` with the recorded `task_id` and the same subagent type; never create a replacement child for a new round. |
+| Wait | Prefer foreground tasks, whose completed result returns directly. If experimental background tasks are enabled, consume their automatic completion messages; do not poll. |
+| Relay | Mirror every complete top-level role report in the current OpenCode conversation with its mode-defined role and round label; repeat it in the final conversation transcript, never a file. |
+| Descendants | Permit them only when that child exposes `task`; otherwise keep bounded subwork in the owning top-level role. |
+
+OpenCode's default `general` subagent is not mechanically read-only. Enforce the review lineage's protocol boundary and compare content-sensitive worktree evidence before and after every review turn.
+
 ## OpenClaw
 
 Select this adapter when `sessions_spawn`, `sessions_send`, and `sessions_yield` are available.

@@ -84,6 +84,7 @@ Hubo 提供两种需要显式调用的模式：
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/openclaw.svg" width="32" alt="OpenClaw"><br><sub>OpenClaw</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/claude.svg" width="32" alt="Claude"><br><sub>Claude Code</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/codex.svg" width="32" alt="Codex"><br><sub>Codex</sub></td>
+    <td align="center"><img src="https://opencode.ai/favicon.svg" width="32" alt="OpenCode"><br><sub>OpenCode</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/paperclipai/paperclip/d1b9448b57a8cfb0e8dbede9bbbc8874a9f66ad7/doc/assets/logos/bash.svg" width="32" alt="Bash"><br><sub>Bash</sub></td>
     <td align="center"><img src="https://cdn.simpleicons.org/githubcopilot/8957E5" width="32" alt="GitHub Copilot"><br><sub>GitHub Copilot CLI</sub></td>
   </tr>
@@ -132,6 +133,14 @@ openclaw plugins install hubo --marketplace h0ngcha0/hubo
 
 安装后重启 OpenClaw gateway。
 
+### OpenCode
+
+```bash
+npx skills add h0ngcha0/hubo --skill hubo hubo-review --agent opencode -g -y
+```
+
+安装后开始一个新的 OpenCode 会话。
+
 ### skills.sh（可选的独立安装）
 
 把 Hubo 的两个技能直接安装到任一受支持的宿主：
@@ -154,6 +163,7 @@ npx skills add h0ngcha0/hubo --skill hubo hubo-review -g
 
 - **Claude Code 或 GitHub Copilot CLI：** `/hubo` 和 `/hubo-review`。
 - **Codex：** `$hubo` 和 `$hubo-review`。
+- **OpenCode：** `/hubo` 和 `/hubo-review`；使用 `/skills` 打开技能选择器。
 - **OpenClaw：** `/skill hubo` 和 `/skill hubo-review`。
 
 例如：
