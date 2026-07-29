@@ -18,6 +18,7 @@ Use the first available host:
 - Codex: create with `spawn_agent`, resume with `followup_task`, and wait with `wait_agent`.
 - Claude Code: create with `Agent`, resume with `SendMessage`, and consume completion notifications.
 - GitHub Copilot CLI: create background roles with `task`, resume with `write_agent`, and consume completion notifications or `read_agent`.
+- OpenCode: create the critic standby first, then the main reviewer, as foreground `general` tasks; record each returned task ID and resume the same child with `task_id`.
 - OpenClaw: create kept sessions with `sessions_spawn`, resume with `sessions_send`, and wait with `sessions_yield`.
 
 Create each role once and reuse its ID for every round. The critic's initial task returns only `READY`. Optional descendants inherit their parent's read-only boundary. If the host cannot create and resume two addressable roles, ask whether the user accepts a sequential single-agent fallback.
